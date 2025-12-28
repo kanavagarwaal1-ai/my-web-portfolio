@@ -1,61 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Coding Portfolio</title>
+    <title>My First Coding Website</title>
+
     <style>
-        /* Page styling */
         body {
-            background: linear-gradient(to right, #89f7fe, #66a6ff);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
             text-align: center;
-            margin: 0;
-            padding: 50px;
+            padding: 30px;
         }
 
-        /* Heading */
         h1 {
-            color: #fff;
-            font-size: 50px;
+            font-size: 40px;
+        }
+
+        .games {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Bio */
-        p {
-            font-size: 20px;
-            color: #f0f0f0;
-            margin-bottom: 40px;
+        .card p {
+            font-size: 14px;
+            color: #555;
         }
 
-        /* Buttons / Game links */
-        .game-button {
+        .card a {
             display: inline-block;
-            margin: 15px;
-            padding: 15px 30px;
-            font-size: 18px;
-            background-color: #4CAF50;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #007bff;
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            transition: 0.3s;
+            border-radius: 6px;
         }
 
-        .game-button:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
+        .card a:hover {
+            background: #0056b3;
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Kanav Agarwaal</h1>
-    <p>Welcome! This is my first coding portfolio. Click a game below to play!</p>
+<h1>My First Coding Website</h1>
+<p>Hi! I am learning web development and these are my games.</p>
 
-    <!-- Game buttons -->
-    <a class="game-button" href="game1.html">🎮 Play Guess the Number</a>
-    <a class="game-button" href="game2.html">🎮 Play Rock Paper Scissors</a>
+<div class="games">
 
+    <div class="card">
+        <h2>Guess the Number</h2>
+        <p>Guess a number between 1 and 10.</p>
+        <a href="game1.html">Play Game</a>
+    </div>
 
+    <div class="card">
+        <h2>Rock Paper Scissors</h2>
+        <p>Play against the computer.</p>
+        <a href="game2.html">Play Game</a>
+    </div>
+
+</div>
 
 </body>
 </html>
