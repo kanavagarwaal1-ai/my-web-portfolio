@@ -1,35 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My First Coding Website</title>
+    <title>My Coding Portfolio</title>
     <style>
+        /* Page styling */
         body {
-            background-color: #f0f8ff;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #89f7fe, #66a6ff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
+            margin: 0;
+            padding: 50px;
         }
 
-        a {
+        /* Heading */
+        h1 {
+            color: #fff;
+            font-size: 50px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Bio */
+        p {
+            font-size: 20px;
+            color: #f0f0f0;
+            margin-bottom: 40px;
+        }
+
+        /* Buttons / Game links */
+        .game-button {
             display: inline-block;
-            padding: 15px 25px;
+            margin: 15px;
+            padding: 15px 30px;
+            font-size: 18px;
             background-color: #4CAF50;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
+            border-radius: 10px;
+            transition: 0.3s;
         }
 
-        a:hover {
+        .game-button:hover {
             background-color: #45a049;
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
 
-<h1>My First Coding Website</h1>
-<a href="game1.html">Play Guess the Number 🎮</a>
+    <h1>Kanav Agarwaal</h1>
+    <p>Welcome! This is my first coding portfolio. Click a game below to play!</p>
+
+    <!-- Game buttons -->
+    <a class="game-button" href="game1.html">🎮 Play Guess the Number</a>
+    <!-- Future games -->
+    <!-- <a class="game-button" href="game2.html">🎮 Play Game 2</a> -->
 
 </body>
 </html>
-
 
