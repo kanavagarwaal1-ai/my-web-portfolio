@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snake & Ladder Game</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f0f8ff;
+            padding: 30px;
+        }
+
+        h2 {
+            font-size: 32px;
+        }
+
+        #board {
+            margin: 20px auto;
+            font-size: 22px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #status {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>🐍 Snake & Ladder 🪜</h2>
+
+<p>Reach position 30 to win!</p>
+
+<div id="board">
+    Your Position: <span id="position">0</span>
+</div>
+
+<button onclick="rollDice()">🎲 Roll Dice</button>
+
+<p id="status"></p>
+
+<script>
+    let position = 0;
+
+    const snakes = {
+        14: 7,
+        25: 5
+    };
+
+    const ladders = {
+        3: 11,
+        8: 18,
+        20: 29
+    };
+
+    function rollDice() {
+        let dice = Math.floor(Math.random() * 6) + 1;
+        position += dice;
+
+        let message = "You rolled: " + dice + ". ";
+
+        if (ladders[position]) {
+            position = ladders[position];
+            message += "🪜 Ladder! Move up!";
+        } else if (snakes[position]) {
+            position = snakes[position];
+            message += "🐍 Snake! Move down!";
+        }
+
+        if (position >= 30) {
+            position = 30;
+            message = "🎉 YOU WON THE GAME!";
+        }
+
+        document.getElementById("position").innerText = position;
+        document.getElementById("status").innerText = message;
+    }
+</script>
+
+</body>
+</html>
