@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f0f8ff;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Rock Paper Scissors</h2>
+
+<button onclick="play('Rock')">Rock</button>
+<button onclick="play('Paper')">Paper</button>
+<button onclick="play('Scissors')">Scissors</button>
+
+<p id="result"></p>
+
+<script>
+  function play(user) {
+    let choices = ["Rock", "Paper", "Scissors"];
+    let comp = choices[Math.floor(Math.random() * 3)];
+
+    if (user === comp) {
+      result.innerHTML = "Tie! Both chose " + user;
+    } else if (
+      (user === "Rock" && comp === "Scissors") ||
+      (user === "Paper" && comp === "Rock") ||
+      (user === "Scissors" && comp === "Paper")
+    ) {
+      result.innerHTML = "You Win! Computer chose " + comp;
+    } else {
+      result.innerHTML = "You Lose! Computer chose " + comp;
+    }
+  }
+</script>
+
+</body>
+</html>
+
