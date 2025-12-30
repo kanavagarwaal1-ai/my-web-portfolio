@@ -2,54 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kanav Agarwaal | Coding Portfolio</title>
+  <title>Kanav Agarwaal | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #333;
+      padding: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      color: #1f2933;
     }
 
     header {
-      background: #0d6efd;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
       color: white;
-      padding: 30px;
+      padding: 60px 20px;
       text-align: center;
     }
 
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
     section {
-      padding: 40px 20px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
+      padding: 50px 20px;
     }
 
     h2 {
       text-align: center;
+      font-size: 2rem;
       margin-bottom: 30px;
     }
 
-    .card-container {
+    /* PROJECT CARD */
+    .projects {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
     }
 
     .card {
       background: white;
-      border-radius: 12px;
+      width: 320px;
       padding: 25px;
-      width: 300px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     }
 
     .card h3 {
@@ -58,51 +74,77 @@
 
     .card p {
       font-size: 14px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      color: #4b5563;
     }
 
     .card a {
-      text-decoration: none;
-      background: #0d6efd;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 6px;
       display: inline-block;
-      font-size: 15px;
+      padding: 12px 20px;
+      background: #2563eb;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
     }
 
     .card a:hover {
-      background: #084298;
+      background: #1e40af;
     }
 
+    /* SKILLS */
     .skills {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .skill {
-      background: #e9ecef;
-      padding: 10px 15px;
+      background: #e5e7eb;
+      padding: 10px 16px;
       border-radius: 20px;
       font-size: 14px;
+      font-weight: 500;
     }
 
+    /* CONTACT */
     .contact {
-      text-align: center;
       background: white;
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .contact p {
+      margin: 10px 0;
+    }
+
+    .contact a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
     }
 
     footer {
-      background: #212529;
-      color: white;
+      background: #111827;
+      color: #9ca3af;
       text-align: center;
       padding: 15px;
       margin-top: 40px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
@@ -111,46 +153,59 @@
 
 <header>
   <h1>Kanav Agarwaal</h1>
-  <p>Beginner Web Developer | Learning HTML, CSS & JavaScript</p>
+  <p>Beginner Web Developer • HTML • CSS • JavaScript</p>
 </header>
 
 <section>
-  <h2>🎮 My Game</h2>
-
-  <div class="card-container">
+  <h2>🚀 My Project</h2>
+  <div class="projects">
     <div class="card">
       <h3>Typing Speed Test</h3>
-      <p>Test how fast you can type and improve your typing speed with accuracy.</p>
-      <a href="typing.html">Play Game</a>
+      <p>
+        A typing speed game that shows a new sentence every test and calculates
+        speed and accuracy.
+      </p>
+      <a href="typing.html" target="_blank">Play Game</a>
     </div>
   </div>
 </section>
 
 <section>
-  <h2>💻 My Skills</h2>
-
+  <h2>🛠 Skills</h2>
   <div class="skills">
     <div class="skill">HTML</div>
     <div class="skill">CSS</div>
     <div class="skill">JavaScript</div>
     <div class="skill">GitHub</div>
+    <div class="skill">GitHub Pages</div>
   </div>
 </section>
 
 <section>
-  <h2>📩 Contact Me</h2>
-
+  <h2>📬 Contact Me</h2>
   <div class="contact">
     <p><strong>Name:</strong> Kanav Agarwaal</p>
-    <p><strong>Email:</strong> your-kanavagarwaal1@gmail.com</p>
-    <p><strong>GitHub:</strong> github.com/kanavagarwaal1-ai</p>
-    <p>I am learning web development and building projects.</p>
+
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:your-email@example.com">your-kanavagarwaal1@gmail.com</a>
+    </p>
+
+    <p>
+      <strong>GitHub:</strong>
+      <a href="https://github.com/kanavagarwaal1-ai" target="_blank">
+        github.com/kanavagarwaal1-ai
+      </a>
+    </p>
+
+    <p>I am learning web development and building real projects.</p>
   </div>
 </section>
 
 <footer>
-  © 2025 Kanav | My Coding Portfolio
+  © 2025 Kanav Agarwaal • My First Coding Portfolio
 </footer>
 
 </body>
 </html>
+
