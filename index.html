@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kanav | My First Coding Website</title>
+  <title>Kanav Agarwaal | Coding Portfolio</title>
 
   <style>
     body {
@@ -33,6 +33,8 @@
     .card-container {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
     .card {
@@ -42,6 +44,12 @@
       width: 300px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     }
 
     .card h3 {
@@ -112,7 +120,7 @@
   <div class="card-container">
     <div class="card">
       <h3>Typing Speed Test</h3>
-      <p>Test how fast you can type and improve your speed.</p>
+      <p>Test how fast you can type and improve your typing speed with accuracy.</p>
       <a href="typing.html">Play Game</a>
     </div>
   </div>
@@ -146,4 +154,3 @@
 
 </body>
 </html>
-
