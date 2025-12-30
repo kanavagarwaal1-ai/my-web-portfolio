@@ -1,147 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Guess the Number</title>
-
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #0d6efd, #6610f2);
-      height: 100vh;
+      font-family: Arial;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #333;
+      height: 100vh;
     }
 
-    .game-box {
+    .box {
       background: white;
       padding: 30px;
-      width: 320px;
-      border-radius: 12px;
+      border-radius: 10px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      animation: pop 0.5s ease;
+      width: 300px;
     }
 
-    @keyframes pop {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    h1 {
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 14px;
-      color: #555;
-    }
-
-    input {
+    input, button {
       width: 100%;
       padding: 10px;
-      font-size: 16px;
-      margin: 15px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      outline: none;
+      margin-top: 10px;
     }
 
     button {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
       background: #0d6efd;
       color: white;
-      margin-top: 10px;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background: #084298;
-    }
-
-    .reset {
-      background: #6c757d;
-    }
-
-    .reset:hover {
-      background: #495057;
-    }
-
-    #message {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    .win {
-      color: green;
-    }
-
-    .lose {
-      color: red;
+      border: none;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="game-box">
-    <h1>🎯 Guess the Number</h1>
-    <p>Guess a number between <strong>1 and 10</strong></p>
+<div class="box">
+  <h2>Guess the Number</h2>
+  <p>Number between 1 and 10</p>
 
-    <input type="number" id="guess" placeholder="Enter number">
+  <input id="guess" type="number">
+  <button onclick="check()">Check</button>
+  <p id="msg"></p>
+</div>
 
-    <button onclick="checkGuess()">Check Guess</button>
-    <button class="reset" onclick="resetGame()">Reset Game</button>
+<script>
+  let secret = Math.floor(Math.random() * 10) + 1;
 
-    <div id="message"></div>
-    <div id="attempts"></div>
-  </div>
-
-  <script>
-    let secret = Math.floor(Math.random() * 10) + 1;
-    let tries = 0;
-
-    function checkGuess() {
-      const guess = document.getElementById("guess").value;
-      const message = document.getElementById("message");
-
-      if (guess === "") {
-        message.textContent = "⚠️ Enter a number first!";
-        message.className = "lose";
-        return;
-      }
-
-      tries++;
-
-      if (Number(guess) === secret) {
-        message.textContent = "🎉 Correct! You won!";
-        message.className = "win";
-      } else {
-        message.textContent = "❌ Wrong! Try again.";
-        message.className = "lose";
-      }
-
-      document.getElementById("attempts").textContent =
-        "Attempts: " + tries;
+  function check() {
+    let g = document.getElementById("guess").value;
+    if (g == secret) {
+      document.getElementById("msg").innerHTML = "🎉 Correct!";
+    } else {
+      document.getElementById("msg").innerHTML = "❌ Try again";
     }
-
-    function resetGame() {
-      secret = Math.floor(Math.random() * 10) + 1;
-      tries = 0;
-      document.getElementById("guess").value = "";
-      document.getElementById("message").textContent = "";
-      document.getElementById("attempts").textContent = "";
-    }
-  </script>
+  }
+</script>
 
 </body>
 </html>
-
