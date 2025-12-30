@@ -17,7 +17,7 @@
 
     .app {
       background: white;
-      width: 450px;
+      width: 500px;
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.3);
@@ -109,22 +109,33 @@
     easy: [
       "Coding is fun and easy.",
       "Practice makes you better.",
-      "Typing fast saves time."
+      "Typing fast saves time.",
+      "I love learning new skills.",
+      "The sun rises in the east."
     ],
     medium: [
       "JavaScript helps build interactive websites.",
       "Learning coding improves logical thinking.",
-      "Web development is a useful skill."
+      "Web development is a useful skill.",
+      "CSS controls how web pages look.",
+      "HTML structures content on websites."
     ],
     hard: [
       "Consistency and practice are essential for mastering programming skills.",
       "Front end developers use HTML CSS and JavaScript together.",
-      "Problem solving ability improves with regular coding practice."
+      "Problem solving ability improves with regular coding practice.",
+      "Algorithms optimize performance and efficiency.",
+      "Data structures organize information for easy access."
     ]
   };
 
   let startTime;
   let currentSentence = "";
+  const usedSentences = {
+    easy: [],
+    medium: [],
+    hard: []
+  };
 
   const input = document.getElementById("input");
   const typeSound = document.getElementById("typeSound");
@@ -133,7 +144,20 @@
   function loadSentence() {
     const level = document.getElementById("level").value;
     const list = sentences[level];
-    currentSentence = list[Math.floor(Math.random() * list.length)];
+
+    // Reset used sentences if all are used
+    if (usedSentences[level].length === list.length) {
+      usedSentences[level] = [];
+    }
+
+    // Pick a random unused sentence
+    let sentence;
+    do {
+      sentence = list[Math.floor(Math.random() * list.length)];
+    } while (usedSentences[level].includes(sentence));
+
+    usedSentences[level].push(sentence);
+    currentSentence = sentence;
 
     document.getElementById("sentence").innerText = currentSentence;
     input.value = "";
