@@ -8,30 +8,32 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0d6efd, #20c997);
+      background: linear-gradient(135deg, #6f42c1, #0d6efd);
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .container {
+    .app {
       background: white;
+      width: 450px;
       padding: 30px;
-      width: 420px;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
       text-align: center;
-      animation: fade 0.5s ease;
-    }
-
-    @keyframes fade {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
     }
 
     h1 {
       margin-bottom: 10px;
+    }
+
+    select {
+      padding: 8px;
+      width: 100%;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-size: 14px;
     }
 
     .sentence {
@@ -40,11 +42,12 @@
       border-radius: 8px;
       margin: 15px 0;
       font-size: 14px;
+      min-height: 40px;
     }
 
     textarea {
       width: 100%;
-      height: 100px;
+      height: 110px;
       padding: 10px;
       font-size: 14px;
       border-radius: 8px;
@@ -53,15 +56,15 @@
     }
 
     button {
-      margin-top: 12px;
-      padding: 10px;
       width: 100%;
-      font-size: 16px;
+      padding: 10px;
+      margin-top: 10px;
       border: none;
       border-radius: 8px;
-      cursor: pointer;
       background: #0d6efd;
       color: white;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     button:hover {
@@ -78,7 +81,103 @@
 
 <body>
 
-<div class="container">
+<div class="app">
   <h1>⌨️ Typing Speed Test</h1>
-  <p>Type th
+
+  <select id="level" onchange="loadSentence()">
+    <option value="easy">Easy</option>
+    <option value="medium">Medium</option>
+    <option value="hard">Hard</option>
+  </select>
+
+  <div class="sentence" id="sentence"></div>
+
+  <textarea id="input" placeholder="Start typing here..."></textarea>
+
+  <button onclick="checkResult()">Check Result</button>
+  <button onclick="loadSentence()">New Test</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<!-- SOUND FILES -->
+<audio id="typeSound" src="https://www.soundjay.com/keyboard/sounds/keyboard-1.mp3"></audio>
+<audio id="doneSound" src="https://www.soundjay.com/buttons/sounds/button-4.mp3"></audio>
+
+<script>
+  const sentences = {
+    easy: [
+      "Coding is fun and easy.",
+      "Practice makes you better.",
+      "Typing fast saves time."
+    ],
+    medium: [
+      "JavaScript helps build interactive websites.",
+      "Learning coding improves logical thinking.",
+      "Web development is a useful skill."
+    ],
+    hard: [
+      "Consistency and practice are essential for mastering programming skills.",
+      "Front end developers use HTML CSS and JavaScript together.",
+      "Problem solving ability improves with regular coding practice."
+    ]
+  };
+
+  let startTime;
+  let currentSentence = "";
+
+  const input = document.getElementById("input");
+  const typeSound = document.getElementById("typeSound");
+  const doneSound = document.getElementById("doneSound");
+
+  function loadSentence() {
+    const level = document.getElementById("level").value;
+    const list = sentences[level];
+    currentSentence = list[Math.floor(Math.random() * list.length)];
+
+    document.getElementById("sentence").innerText = currentSentence;
+    input.value = "";
+    document.getElementById("result").innerText = "";
+    startTime = null;
+  }
+
+  input.addEventListener("keydown", () => {
+    typeSound.currentTime = 0;
+    typeSound.play();
+    if (!startTime) startTime = new Date();
+  });
+
+  function checkResult() {
+    if (!startTime) {
+      result.innerText = "⚠️ Start typing first!";
+      return;
+    }
+
+    doneSound.play();
+
+    const endTime = new Date();
+    const time = (endTime - startTime) / 1000;
+
+    const typed = input.value.trim();
+    const words = currentSentence.split(" ").length;
+    const speed = Math.round((words / time) * 60);
+
+    let correct = 0;
+    for (let i = 0; i < typed.length; i++) {
+      if (typed[i] === currentSentence[i]) correct++;
+    }
+
+    const accuracy = Math.round((correct / currentSentence.length) * 100);
+
+    result.innerHTML =
+      `⏱ Time: ${time.toFixed(1)} sec<br>
+       ⚡ Speed: ${speed} WPM<br>
+       🎯 Accuracy: ${accuracy}%`;
+  }
+
+  loadSentence();
+</script>
+
+</body>
+</html>
 
