@@ -55,6 +55,22 @@
       resize: none;
     }
 
+    .progress-container {
+      background: #e9ecef;
+      border-radius: 8px;
+      height: 12px;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .progress-bar {
+      height: 12px;
+      width: 0%;
+      background: #0d6efd;
+      border-radius: 8px;
+      transition: width 0.1s;
+    }
+
     button {
       width: 100%;
       padding: 10px;
@@ -93,6 +109,10 @@
   <div class="sentence" id="sentence"></div>
 
   <textarea id="input" placeholder="Start typing here..."></textarea>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
 
   <button onclick="checkResult()">Check Result</button>
   <button onclick="loadSentence()">New Test</button>
@@ -138,6 +158,7 @@
   };
 
   const input = document.getElementById("input");
+  const progressBar = document.getElementById("progress-bar");
   const typeSound = document.getElementById("typeSound");
   const doneSound = document.getElementById("doneSound");
 
@@ -145,12 +166,10 @@
     const level = document.getElementById("level").value;
     const list = sentences[level];
 
-    // Reset used sentences if all are used
     if (usedSentences[level].length === list.length) {
       usedSentences[level] = [];
     }
 
-    // Pick a random unused sentence
     let sentence;
     do {
       sentence = list[Math.floor(Math.random() * list.length)];
@@ -161,6 +180,7 @@
 
     document.getElementById("sentence").innerText = currentSentence;
     input.value = "";
+    progressBar.style.width = "0%";
     document.getElementById("result").innerText = "";
     startTime = null;
   }
@@ -169,7 +189,17 @@
     typeSound.currentTime = 0;
     typeSound.play();
     if (!startTime) startTime = new Date();
+    updateProgress();
   });
+
+  input.addEventListener("input", updateProgress);
+
+  function updateProgress() {
+    const typedLength = input.value.length;
+    const totalLength = currentSentence.length;
+    let percent = Math.min((typedLength / totalLength) * 100, 100);
+    progressBar.style.width = percent + "%";
+  }
 
   function checkResult() {
     if (!startTime) {
